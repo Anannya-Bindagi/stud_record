@@ -1,6 +1,16 @@
 import sys
+
+def show_grade_table():
+    print("=== Grade Table ===")
+    print("90 – 100  → Grade S")
+    print("80 – 89   → Grade A")
+    print("65 – 79   → Grade B")
+    print("50 – 64   → Grade C")
+    print("40 – 49   → Grade D")
+    print("Below 40  → Grade F")
+    print("===================\n")
+
 def calculate_grade(avg):
-    """Return grade based on average marks"""
     if 90 <= avg <= 100:
         return "S"
     elif 80 <= avg <= 89:
@@ -13,40 +23,51 @@ def calculate_grade(avg):
         return "D"
     else:
         return "F"
+
 def get_student_result(name, dept, semester, m1, m2, m3):
-    """Return formatted student result"""
     avg = (m1 + m2 + m3) / 3
     grade = calculate_grade(avg)
+
     return (
         f"Name: {name}, Department: {dept}, Semester: {semester}, "
         f"Average: {avg:.2f}, Grade: {grade}"
     )
+
 if __name__ == "__main__":
-    print("=== Student Result Program ===")
+    print("=== Student Result Program ===\n")
+
+    # 1️ Show grading table FIRST
+    show_grade_table()
+
     try:
-        # Case 1: Jenkins / CLI arguments
-        if len(sys.argv) == 7:  # 0=script, 1=name, 2=dept, 3=semester, 4,5,6=marks
+        # 2️ Jenkins / Command-line input
+        if len(sys.argv) == 7:
             name = sys.argv[1]
             dept = sys.argv[2]
             semester = sys.argv[3]
             m1 = int(sys.argv[4])
             m2 = int(sys.argv[5])
             m3 = int(sys.argv[6])
+
+        # 3️ Manual input (only if no CLI arguments)
         else:
-            # Case 2: Manual input (for local testing)
             name = input("Enter Student Name: ")
             dept = input("Enter Department: ")
             semester = input("Enter Semester: ")
             m1 = int(input("Enter Subject 1 Marks: "))
             m2 = int(input("Enter Subject 2 Marks: "))
             m3 = int(input("Enter Subject 3 Marks: "))
+
         print("\n=== Entered Student Details ===")
         print("Name:", name)
         print("Department:", dept)
         print("Semester:", semester)
         print("Marks:", m1, m2, m3)
+
         result = get_student_result(name, dept, semester, m1, m2, m3)
-        print("\nFinal Result:")
+
+        print("\n=== Final Result ===")
         print(result)
+
     except ValueError:
         print("Invalid input! Please enter numeric marks.")
