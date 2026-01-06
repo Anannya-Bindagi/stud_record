@@ -2,12 +2,12 @@ import sys
 
 def show_grade_table():
     print("=== Grade Table ===")
-    print("90 – 100  → Grade S")
-    print("80 – 89   → Grade A")
-    print("65 – 79   → Grade B")
-    print("50 – 64   → Grade C")
-    print("40 – 49   → Grade D")
-    print("Below 40  → Grade F")
+    print("90 to 100  : Grade S")
+    print("80 to 89   : Grade A")
+    print("65 to 79   : Grade B")
+    print("50 to 64   : Grade C")
+    print("40 to 49   : Grade D")
+    print("Below 40   : Grade F")
     print("===================\n")
 
 def calculate_grade(avg):
@@ -27,7 +27,6 @@ def calculate_grade(avg):
 def get_student_result(name, dept, semester, m1, m2, m3):
     avg = (m1 + m2 + m3) / 3
     grade = calculate_grade(avg)
-
     return (
         f"Name: {name}, Department: {dept}, Semester: {semester}, "
         f"Average: {avg:.2f}, Grade: {grade}"
@@ -36,11 +35,11 @@ def get_student_result(name, dept, semester, m1, m2, m3):
 if __name__ == "__main__":
     print("=== Student Result Program ===\n")
 
-    # 1️ Show grading table FIRST
+    # Show grade table first
     show_grade_table()
 
     try:
-        # 2️ Jenkins / Command-line input
+        # Jenkins / CLI input
         if len(sys.argv) == 7:
             name = sys.argv[1]
             dept = sys.argv[2]
@@ -48,9 +47,8 @@ if __name__ == "__main__":
             m1 = int(sys.argv[4])
             m2 = int(sys.argv[5])
             m3 = int(sys.argv[6])
-
-        # 3️ Manual input (only if no CLI arguments)
         else:
+            # Manual input (local testing)
             name = input("Enter Student Name: ")
             dept = input("Enter Department: ")
             semester = input("Enter Semester: ")
