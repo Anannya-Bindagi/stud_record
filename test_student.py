@@ -1,6 +1,6 @@
 import pytest
 from student import get_student_result
-def test_student_grade_A():
+def test_student_grade_S():
     name = "anannya"
     dept = "bca"
     semester = "3"
