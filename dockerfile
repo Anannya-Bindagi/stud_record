@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 # Set working directory inside container
-WORKDIR / stud_record
+WORKDIR /stud_record
 
 # Copy application and test files
 COPY student.py .
